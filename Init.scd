@@ -1,7 +1,8 @@
 (
 // --- create address book ---
 ~addrBook = AddrBook.new;
-~addrBook.addMe(\imac);
+~myName = 'imac'; // change this to your name!
+~addrBook.addMe(~myName);
 
 ~hail = Hail(~addrBook); // announce ourselves
 
@@ -20,3 +21,7 @@
 	"Check out this new def!!\n\n%\n".format(defcode).postln;
 });
 )
+
+~addrBook.names; // see who's connected
+
+s.boot; // boot our server

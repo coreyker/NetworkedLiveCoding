@@ -1,7 +1,7 @@
 // --- coding a synthdef ---
 
 ~reg.keys;
-~remoteServer = ~reg['laptop']; // choose one from the list of keys
+~remoteServer = ~reg['laptop']; // choose a string from the list of keys
 
 (
 SynthDef(\percSine, {
@@ -21,3 +21,18 @@ x = Synth(\percSine, target:s);
 y = Synth(\percSine, target:~remoteServer);
 
 
+// --- a short routine ---
+(
+{
+	12.do{
+		|i|
+		if( i.mod(2)==0, {
+			Synth(\percSine, [\freq, 2**(i/12) * 200, \dur, 4], target:s);
+		},{
+			Synth(\percSine, [\freq, 2**(i/12) * 400, \dur, 4], target:~remoteServer);
+		});
+		i.postln;
+		0.125.wait;
+	}
+}.fork;
+)
