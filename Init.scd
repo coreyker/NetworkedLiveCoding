@@ -1,4 +1,5 @@
 (
+s.waitForBoot({
 // --- create address book ---
 ~addrBook = AddrBook.new;
 ~myName = 'imac'; // change this to your name!
@@ -20,8 +21,8 @@
 ~synthDescRel.addDependant({|descRelay, what, desc, defcode|
 	"Check out this new def!!\n\n%\n".format(defcode).postln;
 });
+});
 )
 
 ~addrBook.names; // see who's connected
-
-s.boot; // boot our server
+//~addrBook.peers.size
